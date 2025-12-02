@@ -24,14 +24,4 @@ export const Contact = () => (
   </div>
 );
 
-export const Settings = () => (
-  <div className="text-white">
-    <h2 className="text-2xl font-bold mb-3">Settings</h2>
-    <div className="flex flex-col gap-2.5">
-      <div className="p-4 bg-white/10 rounded-xl cursor-pointer active:bg-white/20">Airplane Mode</div>
-      <div className="p-4 bg-white/10 rounded-xl cursor-pointer active:bg-white/20">Wi-Fi</div>
-      <div className="p-4 bg-white/10 rounded-xl cursor-pointer active:bg-white/20">Bluetooth</div>
-      <div className="p-4 bg-white/10 rounded-xl cursor-pointer active:bg-white/20">Display & Brightness</div>
-    </div>
-  </div>
-);
+

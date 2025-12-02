@@ -26,8 +26,8 @@ const LockScreen = ({ onUnlock }) => {
             👋
           </div>
           <div className="flex flex-col">
-            <span className="font-semibold text-sm">Welcome to YOU-OS</span>
-            <span className="text-xs opacity-80">Swipe up to unlock your portfolio.</span>
+            <span className="font-semibold text-sm">Welcome to Syauqi Portfolio</span>
+            <span className="text-xs opacity-80">Swipe up to unlock</span>
           </div>
         </div>
       </div>

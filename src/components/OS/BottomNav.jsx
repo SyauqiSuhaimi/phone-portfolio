@@ -1,28 +1,45 @@
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 const BottomNav = ({ onHome, onBack, onOptions }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="fixed bottom-0 left-0 w-full h-16 bg-gray-900/90 backdrop-blur-md border-t border-white/10 flex items-center justify-around px-4 z-[300]">
-      <button 
-        onClick={onOptions}
-        className="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors active:scale-95"
-      >
-        <span className="text-xl">⚙️</span>
-        <span className="text-xs">Options</span>
-      </button>
-      <button 
-        onClick={onHome}
-        className="flex flex-col items-center gap-1 text-white hover:text-os-accent transition-colors active:scale-95"
-      >
-        <span className="text-xl">🏠</span>
-        <span className="text-xs font-medium">Home</span>
-      </button>
+    <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 h-14 backdrop-blur-xl border rounded-full flex items-center justify-center gap-10 px-8 z-[300] shadow-2xl transition-all ${
+      theme === 'dark' 
+        ? 'bg-black/40 border-white/10 text-white' 
+        : 'bg-white/60 border-black/5 text-black'
+    }`}>
       <button 
         onClick={onBack}
-        className="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors active:scale-95"
+        className={`transition-all active:scale-90 p-2 ${theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-black/60 hover:text-black'}`}
+        aria-label="Back"
       >
-        <span className="text-xl">◀️</span>
-        <span className="text-xs">Back</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+      
+      <button 
+        onClick={onHome}
+        className={`transition-all active:scale-90 p-2 transform hover:-translate-y-1 ${theme === 'dark' ? 'text-white hover:text-white' : 'text-black hover:text-black'}`}
+        aria-label="Home"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        </svg>
+      </button>
+
+      <button 
+        onClick={onOptions}
+        className={`transition-all active:scale-90 p-2 ${theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-black/60 hover:text-black'}`}
+        aria-label="Options"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+          <circle cx="5" cy="12" r="1" />
+        </svg>
       </button>
     </div>
   );

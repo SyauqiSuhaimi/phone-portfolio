@@ -6,7 +6,8 @@ import AppWindow from './components/Apps/AppWindow';
 import About from './components/Apps/About';
 import Projects from './components/Apps/Projects';
 import Skills from './components/Apps/Skills';
-import { Gallery, Contact, Settings } from './components/Apps/Placeholders';
+import Settings from './components/Apps/Settings';
+import { Gallery, Contact } from './components/Apps/Placeholders';
 import NotificationSystem from './components/OS/NotificationSystem';
 import BottomNav from './components/OS/BottomNav';
 import { useSwipe } from './hooks/useSwipe';
@@ -78,7 +79,7 @@ function App() {
   const activeAppConfig = apps.find(a => a.id === activeAppId);
 
   return (
-    <div className="w-full h-full bg-black relative overflow-hidden" {...(isLocked ? swipeHandlers : {})}>
+    <div className="w-full h-full bg-gray-100 dark:bg-black relative overflow-hidden" {...(isLocked ? swipeHandlers : {})}>
       <AnimatePresence>
         {isLocked && <LockScreen onUnlock={handleUnlock} />}
       </AnimatePresence>
