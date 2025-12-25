@@ -1,0 +1,19 @@
+[
+  {
+    "icon": "fa-file-text",
+    "link": "https://drive.google.com/file/d/1hRuiT2narXGxGANctYuwpxc3RKvdBr18/view?usp=sharing",
+    "tooltip": "Download Resume"
+  },
+  {
+    "icon": "fa-github",
+    "link": "https://github.com/SyauqiSuhaimi"
+  },
+  {
+    "icon": "fa-linkedin-square",
+    "link": "https://www.linkedin.com/in/muhammad-syauqi-64b52118b/"
+  },
+  {
+    "icon": "fa-envelope-o",
+    "link": "mailto:muhammadsyauqi122@gmail.com"
+  }
+]

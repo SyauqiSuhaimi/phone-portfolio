@@ -1,0 +1,16 @@
+[
+  { "name": "Vue", "src": "/skill/Vue.png" },
+  { "name": "React", "src": "/skill/react.png" },
+  { "name": "Next.js", "src": "/skill/nextjs.webp" },
+  { "name": ".NET", "src": "/skill/net.png" },
+  { "name": "TypeScript", "src": "/skill/ts.png" },
+  { "name": "JavaScript", "src": "/skill/js.png" },
+  { "name": "Tailwind", "src": "/skill/tailwind.png" },
+  { "name": "Bootstrap", "src": "/skill/bootstrap.png" },
+  { "name": "HTML", "src": "/skill/html.png" },
+  { "name": "CSS", "src": "/skill/css.png" },
+  { "name": "Angular JS", "src": "/skill/angular.png" },
+  { "name": "NestJS", "src": "/skill/nest.png" },
+  { "name": "Quasar", "src": "/skill/quasar.png" },
+  { "name": "PHP", "src": "/skill/php.png" }
+]
