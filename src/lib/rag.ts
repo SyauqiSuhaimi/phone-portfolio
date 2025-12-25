@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import type { FeatureExtractionOutput } from "@huggingface/inference";
 import { getHfClient } from "@/lib/huggingface";
 
 type Chunk = {
@@ -48,10 +49,20 @@ const chunkText = (input: string) => {
   return chunks;
 };
 
-const normalizeEmbedding = (output: number[] | number[][]) => {
-  if (Array.isArray(output[0])) {
-    return (output as number[][])[0];
+const normalizeEmbedding = (output: FeatureExtractionOutput) => {
+  if (output.length === 0) {
+    return [];
   }
+
+  const first = output[0];
+  if (Array.isArray(first)) {
+    const second = first[0];
+    if (Array.isArray(second)) {
+      return second as number[];
+    }
+    return first as number[];
+  }
+
   return output as number[];
 };
 

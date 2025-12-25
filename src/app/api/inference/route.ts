@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
+import type { InferenceProvider } from "@huggingface/inference";
 import { getHfClient } from "@/lib/huggingface";
 import { getRagContext } from "@/lib/rag";
 
 export const runtime = "nodejs";
 
-const DEFAULT_MODEL =
-  process.env.HF_MODEL ?? "deepseek-ai/DeepSeek-V3.2";
-const DEFAULT_PROVIDER = process.env.HF_PROVIDER ?? "novita";
+const DEFAULT_MODEL = process.env.HF_MODEL ?? "deepseek-ai/DeepSeek-V3.2";
+const DEFAULT_PROVIDER: InferenceProvider =
+  (process.env.HF_PROVIDER as InferenceProvider | undefined) ?? "novita";
 
 type ChatMessage = {
   role: "system" | "user" | "assistant";
@@ -31,13 +32,12 @@ const UNSUPPORTED_REPLY =
 const getScopePrompt = (question: string) => [
   {
     role: "system" as const,
-    content:
-      "You are a strict classifier. Reply with only 'true' or 'false'.",
+    content: "You are a strict classifier. Reply with only 'true' or 'false'.",
   },
   {
     role: "user" as const,
     content:
-      "Question: \"" +
+      'Question: "' +
       question +
       "\"\nIs this about the person's portfolio, projects, skills, experience, contact, or hiring availability?",
   },
@@ -59,14 +59,15 @@ export async function POST(request: Request) {
     const client = getHfClient();
     const model =
       typeof payload?.model === "string" ? payload.model : DEFAULT_MODEL;
-    const provider =
+    const provider: InferenceProvider =
       typeof payload?.provider === "string"
-        ? payload.provider
+        ? (payload.provider as InferenceProvider)
         : DEFAULT_PROVIDER;
     const temperature =
-      typeof payload?.temperature === "number" ? payload.temperature : undefined;
-    const topP =
-      typeof payload?.topP === "number" ? payload.topP : undefined;
+      typeof payload?.temperature === "number"
+        ? payload.temperature
+        : undefined;
+    const topP = typeof payload?.topP === "number" ? payload.topP : undefined;
     const repetitionPenalty =
       typeof payload?.repetitionPenalty === "number"
         ? payload.repetitionPenalty
@@ -112,8 +113,8 @@ export async function POST(request: Request) {
         typeof payload.maxTokens === "number"
           ? payload.maxTokens
           : typeof payload.maxNewTokens === "number"
-            ? payload.maxNewTokens
-            : undefined;
+          ? payload.maxNewTokens
+          : undefined;
 
       const context = await getRagContext(lastUserMessage.content);
       const contextMessage = context

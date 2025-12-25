@@ -18,11 +18,16 @@ type Point = {
 
 type SwipeEvent = TouchEvent<HTMLElement> | MouseEvent<HTMLElement>;
 
+const isTouchEvent = (event: SwipeEvent): event is TouchEvent<HTMLElement> =>
+  "targetTouches" in event;
+
 const getEventPoint = (event: SwipeEvent): Point => {
-  if ("targetTouches" in event && event.targetTouches.length > 0) {
+  if (isTouchEvent(event)) {
+    const touch = event.targetTouches[0] ?? event.changedTouches[0];
+
     return {
-      x: event.targetTouches[0].clientX,
-      y: event.targetTouches[0].clientY,
+      x: touch?.clientX ?? 0,
+      y: touch?.clientY ?? 0,
     };
   }
 

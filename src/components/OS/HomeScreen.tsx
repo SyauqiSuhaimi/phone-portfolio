@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Transition } from "framer-motion";
 import StatusBar from "./StatusBar";
 import AppGrid from "./AppGrid";
 import ControlCenter from "./ControlCenter";
@@ -73,7 +73,7 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
     }),
   };
 
-  const pageTransition = {
+  const pageTransition: Transition = {
     type: "spring",
     stiffness: 300,
     damping: 30,
