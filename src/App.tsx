@@ -9,16 +9,17 @@ import FolderView from "./components/OS/FolderView";
 import About from "./components/Apps/About";
 import Chat from "./components/Apps/Chat";
 import Camera from "./components/Apps/Camera";
-import Projects from "./components/Apps/Projects";
-import Skills from "./components/Apps/Skills";
+import SkillsTree from "./components/Apps/SkillsTree";
+import AppStore from "./components/Apps/AppStore";
 import Settings from "./components/Apps/Settings";
 import Contact from "./components/Apps/Contact";
-import { Gallery } from "./components/Apps/Placeholders";
+import { Gallery } from "./components/Apps/Gallery";
 import NotificationSystem from "./components/OS/NotificationSystem";
 import BottomNav from "./components/OS/BottomNav";
 import { useSwipe } from "./hooks/useSwipe";
 import { useHaptics } from "./hooks/useHaptics";
 import { apps } from "./config/apps";
+import Skills from "./components/Apps/Skills";
 
 function App() {
   const [isLocked, setIsLocked] = useState(true);
@@ -49,6 +50,7 @@ function App() {
 
   const handleCloseApp = () => {
     setActiveAppId(null);
+    console.log("closed app", activeAppId);
   };
 
   const handleCloseFolder = () => {
@@ -77,8 +79,10 @@ function App() {
   };
 
   const handleOptions = () => {
-    // Open settings or options
-    handleAppClick("settings");
+    triggerHaptic();
+    setActiveFolderId(null);
+    setFolderOrigin(null);
+    setActiveAppId((prev) => (prev === "settings" ? null : "settings"));
   };
 
   const swipeHandlers = useSwipe({
@@ -94,7 +98,7 @@ function App() {
       case "about":
         return <About />;
       case "projects":
-        return <Projects />;
+        return <AppStore />;
       case "skills":
         return <Skills />;
       case "gallery":

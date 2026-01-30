@@ -110,7 +110,7 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
             </motion.div>
           )}
 
-          {screenIndex === -1 && (
+          {/* {screenIndex === -1 && (
             <motion.div
               key="projects"
               custom={direction}
@@ -123,7 +123,7 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
             >
               <Projects />
             </motion.div>
-          )}
+          )} */}
 
           {screenIndex === 1 && (
             <motion.div

@@ -1,19 +1,36 @@
 [
   {
+    "company": "GARDENIA BAKERIES (KL)",
+    "position": "Software Developer",
+    "year": "September 2025 - Present",
+    "jd": [
+      "Develop and maintain web applications for internal use.",
+      "Collaborate with cross-functional teams to deliver high-quality software that help to improve the efficiency of the company."
+    ],
+    "tech": [
+      "React JS",
+      ".Net",
+      "Typescript",
+      "C#",
+      "MSSQL"
+    ]
+  },
+  {
     "company": "GOCLOUD TECHNOLOGIES (M) SDN BHD",
     "position": "Software Developer",
-    "year": "February 2024 - Present",
+    "year": "February 2024 - August 2025",
     "jd": [
       "Maintain and enhance a SaaS clinic management system for beauty and medical businesses, contributing to both front-end and back-end with AngularJS, Vue.js, .NET, and C#.",
       "Optimized performance by consolidating API requests, improved UI/UX in collaboration with designers, and worked with customer support to resolve issues, boosting reliability."
     ],
     "tech": [
+      "Angular JS",
+      ".Net",
       "Vue JS",
-      "Nest JS",
+      "MSSQL",
       "HTML/CSS",
       "Javascript",
-      "Typescript",
-      "Quasar"
+      "C#"
     ]
   },
   {

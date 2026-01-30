@@ -8,7 +8,7 @@ const StatusBar = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={`fixed top-0 left-0 w-full h-11 flex justify-between items-center px-5 text-sm font-semibold z-[1000] transition-colors ${theme === 'dark' ? 'text-black' : 'text-white'}`}>
+    <div className={`fixed top-0 left-0 w-full h-11 flex justify-between items-center px-5 text-sm font-semibold z-[1000] transition-colors ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
       <div className="flex-1">
         <span className="text-sm">{formattedTime}</span>
       </div>

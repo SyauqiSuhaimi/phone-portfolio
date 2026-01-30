@@ -3,6 +3,7 @@
     "id": 1,
     "title": "Aoikumo",
     "description": "Cloud based clinic and aesthetic management system",
+    "type": ["SaaS", "Web App", "Mobile App"],
     "tech": [
       "Angular JS",
       ".NET",
@@ -19,6 +20,7 @@
     "id": 2,
     "title": "Facility Management System",
     "description": "Software solution designed to help organizations efficiently manage and tracks their physical assets and facilities.",
+    "type": ["SaaS", "Web App", "Mobile App"],
     "tech": [
       "Vue JS",
       "Nest JS",
@@ -34,6 +36,7 @@
     "id": 3,
     "title": "Basic Image Editor",
     "description": "100% AI-generated functional image editor.",
+    "type": ["Tools", "Web App"],
     "tech": ["v0", "HTML/CSS", "Javascript"],
     "image": "/projects/basicimageeditor.png",
     "link": "https://image-editor-delta-eight.vercel.app/"
@@ -42,6 +45,7 @@
     "id": 4,
     "title": "NeedForTrees",
     "description": "Built using Vue.js, this responsive website introduces NeedForTrees, a project aimed at raising awareness about deforestation and showcasing cutting-edge NFT technology.",
+    "type": ["Landing Page"],
     "tech": ["Vue JS", "HTML/CSS", "Javascript", "Bootstrap"],
     "image": "/projects/nft3.png",
     "link": "https://nft-project-omega-nine.vercel.app/"
@@ -50,6 +54,7 @@
     "id": 5,
     "title": "Wise Premium",
     "description": "Designed using Vue.js and featuring multilingual support in Mandarin and English, this responsive website serves as the gateway to an exclusive club experience.",
+    "type": ["Landing Page"],
     "tech": ["Vue JS", "HTML/CSS", "Javascript", "Bootstrap"],
     "image": "/projects/wise2.png",
     "link": "https://wisepremium.vercel.app/"

@@ -4,8 +4,8 @@ import { Providers } from "@/components/Providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
-  title: "OS Portfolio",
-  description: "A phone-inspired portfolio experience.",
+  title: "Syauqi Suhaimi",
+  description: "",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

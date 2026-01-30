@@ -1,0 +1,42 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "title": "Core Fundamentals",
+      "nodes": [
+        { "id": "html", "label": "HTML", "icon": "/skill/html.png", "category": "web" },
+        { "id": "css", "label": "CSS", "icon": "/skill/css.png", "category": "web" },
+        { "id": "js", "label": "JavaScript", "icon": "/skill/js.png", "category": "lang" },
+        { "id": "php", "label": "PHP", "icon": "/skill/php.png", "category": "lang" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Advanced Logic & Stylings",
+      "nodes": [
+        { "id": "ts", "label": "TypeScript", "icon": "/skill/ts.png", "parents": ["js"], "category": "lang" },
+        { "id": "tailwind", "label": "Tailwind", "icon": "/skill/tailwind.png", "parents": ["css", "html"], "category": "style" },
+        { "id": "bootstrap", "label": "Bootstrap", "icon": "/skill/bootstrap.png", "parents": ["css", "html"], "category": "style" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Modern Frameworks",
+      "nodes": [
+        { "id": "react", "label": "React", "icon": "/skill/react.png", "parents": ["js", "ts"], "category": "frontend" },
+        { "id": "vue", "label": "Vue", "icon": "/skill/Vue.png", "parents": ["js", "html"], "category": "frontend" },
+        { "id": "angular", "label": "Angular", "icon": "/skill/angular.png", "parents": ["js", "ts"], "category": "frontend" },
+        { "id": "dotnet", "label": ".NET", "icon": "/skill/net.png", "parents": ["php"], "category": "backend" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Fullstack Ecosystem",
+      "nodes": [
+        { "id": "next", "label": "Next.js", "icon": "/skill/nextjs.webp", "parents": ["react"], "category": "fullstack" },
+        { "id": "quasar", "label": "Quasar", "icon": "/skill/quasar.png", "parents": ["vue"], "category": "frontend" },
+        { "id": "nest", "label": "NestJS", "icon": "/skill/nest.png", "parents": ["ts"], "category": "backend" }
+      ]
+    }
+  ]
+}

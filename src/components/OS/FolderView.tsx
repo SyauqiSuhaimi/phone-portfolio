@@ -70,42 +70,34 @@ const FolderView = ({ folder, origin, onClose, onAppClick }: FolderViewProps) =>
 
       <div className="flex-1 px-5 pb-10 overflow-y-auto">
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {apps.map((app) => (
-            <button
-              key={app.id}
-              type="button"
-              onClick={() => onAppClick(app.id)}
-              className="group flex flex-col items-center gap-2 active:scale-95 transition-transform"
-            >
-              <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-xl border border-white/10 ${
-                  theme === "dark"
-                    ? "bg-black/40 text-white group-hover:bg-black/60"
-                    : "bg-white text-black group-hover:bg-white/80"
-                } transition-colors`}
+          {apps.map((app) => {
+            const AppIcon = app.icon;
+            return (
+              <button
+                key={app.id}
+                type="button"
+                onClick={() => onAppClick(app.id)}
+                className="group flex flex-col items-center gap-2 active:scale-95 transition-transform"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-xl border border-white/10 ${
+                    theme === "dark"
+                      ? "bg-black/40 text-white group-hover:bg-black/60"
+                      : "bg-white text-black group-hover:bg-white/80"
+                  } transition-colors`}
                 >
-                  <path d={app.iconPath} />
-                </svg>
-              </div>
-              <span
-                className={`text-xs font-medium ${
-                  theme === "dark" ? "text-white" : "text-white"
-                }`}
-              >
-                {app.name}
-              </span>
-            </button>
-          ))}
+                  <AppIcon size={32} strokeWidth={1.5} />
+                </div>
+                <span
+                  className={`text-xs font-medium ${
+                    theme === "dark" ? "text-white" : "text-white"
+                  }`}
+                >
+                  {app.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     </motion.div>
