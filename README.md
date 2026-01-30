@@ -1,51 +1,22 @@
-# OS Portfolio (Next.js + TypeScript)
+# Phone OS Portfolio
 
-A phone-inspired portfolio UI rebuilt with Next.js, React, and TypeScript.
+A highly interactive web-based portfolio designed to mimic a modern mobile operating system. 
 
-## Development
+Built with **Next.js**, **React**, **Tailwind CSS**, and **Framer Motion**, this project offers a unique and engaging way to showcase skills, projects, and work experience.
 
-Install dependencies and start the dev server:
+## ✨ Features
 
-```bash
-npm install
-npm run dev
-```
+-   **Realistic OS Interface**: Fluid animations, gestures (swipe to unlock), and glassmorphism UI.
+-   **App Ecosystem**:
+    -   **Gallery**: Upload your own photos/videos and set them as the system wallpaper (including video wallpapers!).
+    -   **App Store**: Browse and "install" my projects.
+    -   **Settings**: Customize your experience.
+-   **Global Notifications**: System-wide alerts and toasts.
+-   **Type-Safe**: Built entirely with TypeScript for robustness.
 
-## Hugging Face Inference API
+## 🛠️ Tech Stack
 
-Set your token in `.env.local`:
-
-```bash
-HF_ACCESS_TOKEN=your_token_here
-HF_MODEL=deepseek-ai/DeepSeek-V3.2
-HF_PROVIDER=novita
-HF_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
-```
-
-Use the server-side endpoint:
-
-```bash
-curl -X POST http://localhost:3000/api/inference ^
-  -H "Content-Type: application/json" ^
-  -d "{\"messages\":[{\"role\":\"user\",\"content\":\"Say hello from the OS UI\"}]}"
-```
-
-Optional parameters: `model`, `provider`, `maxTokens`, `temperature`, `topP`, `repetitionPenalty`.
-
-## RAG (Portfolio Context)
-
-Update `data/portfolio.md` with your real portfolio info. The API will embed it
-and retrieve relevant chunks for chat answers.
-
-## Build
-
-```bash
-npm run build
-npm start
-```
-
-## Lint
-
-```bash
-npm run lint
-```
+-   **Framework**: [Next.js](https://nextjs.org/) (App Router)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+-   **State Management**: React Context + IndexedDB (for persisting wallpapers/gallery).
