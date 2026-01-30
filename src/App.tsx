@@ -50,7 +50,6 @@ function App() {
 
   const handleCloseApp = () => {
     setActiveAppId(null);
-    console.log("closed app", activeAppId);
   };
 
   const handleCloseFolder = () => {

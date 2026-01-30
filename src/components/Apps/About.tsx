@@ -121,10 +121,10 @@ const About = () => {
 
       {/* Quick Actions */}
       <div className="flex justify-evenly mb-8">
-          <QuickAction icon={Mail} label="Email" href="mailto:syauqi@example.com" color="bg-blue-500" />
-          <QuickAction icon={Github} label="GitHub" href="https://github.com" color="bg-gray-800 dark:bg-gray-700" />
-          <QuickAction icon={Linkedin} label="LinkedIn" href="https://linkedin.com" color="bg-blue-600" />
-          <QuickAction icon={Globe} label="Website" href="https://syauqi.com" color="bg-green-500" />
+          <QuickAction icon={Mail} label="Email" href="mailto:muhammadsyauqi122@gmail.com" color="bg-blue-500" />
+          <QuickAction icon={Github} label="GitHub" href="https://github.com/SyauqiSuhaimi" color="bg-gray-800 dark:bg-gray-700" />
+          <QuickAction icon={Linkedin} label="LinkedIn" href="https://www.linkedin.com/in/muhammad-syauqi-64b52118b/" color="bg-blue-600" />
+          <QuickAction icon={Globe} label="Website" href="https://www.syauqisuhaimi.my/" color="bg-green-500" />
       </div>
 
       <ListGroup title="Experience">
