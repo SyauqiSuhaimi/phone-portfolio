@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useClock } from "../../hooks/useClock";
+import { useWallpaper } from "../../context/WallpaperContext";
 
 type LockScreenProps = {
   onUnlock: () => void;
@@ -9,19 +10,29 @@ type LockScreenProps = {
 
 const LockScreen = ({ onUnlock }: LockScreenProps) => {
   const { formattedTime, formattedDate } = useClock();
+  const { wallpaper, type } = useWallpaper();
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ y: '-100%', opacity: 0 }}
       transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-      className="absolute top-0 left-0 w-full h-full bg-cover bg-center flex flex-col items-center justify-between p-10 pt-16 pb-10 text-white z-[100]"
+      className="absolute top-0 left-0 w-full h-full bg-cover bg-center flex flex-col items-center justify-between p-10 pt-16 pb-10 text-white z-[100] transition-all duration-700"
       style={{
-        backgroundImage:
-          'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")',
+        backgroundImage: type === 'image' ? `url(${wallpaper})` : undefined,
       }}
       onClick={onUnlock}
     >
+      {type === 'video' && (
+        <video
+          src={wallpaper}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+        />
+      )}
       <div className="flex-shrink-0 h-11" />
       
       <div className="text-center mt-10">

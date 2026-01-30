@@ -20,6 +20,7 @@ import { useSwipe } from "./hooks/useSwipe";
 import { useHaptics } from "./hooks/useHaptics";
 import { apps } from "./config/apps";
 import Skills from "./components/Apps/Skills";
+import { useWallpaper } from "./context/WallpaperContext";
 
 function App() {
   const [isLocked, setIsLocked] = useState(true);
@@ -27,6 +28,7 @@ function App() {
   const [activeFolderId, setActiveFolderId] = useState<string | null>(null);
   const [folderOrigin, setFolderOrigin] = useState<DOMRect | null>(null);
   const { triggerHaptic } = useHaptics();
+  const { wallpaper } = useWallpaper();
 
   const handleUnlock = () => {
     triggerHaptic();
@@ -118,7 +120,8 @@ function App() {
 
   return (
     <div
-      className="w-full h-full bg-gray-100 dark:bg-black relative overflow-hidden"
+      className="w-full h-full bg-cover bg-center relative overflow-hidden transition-all duration-700"
+      style={{ backgroundImage: `url(${wallpaper})` }}
       {...(isLocked ? swipeHandlers : {})}
     >
       <Analytics />

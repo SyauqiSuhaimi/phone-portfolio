@@ -10,6 +10,7 @@ const PROJECT_IMAGES = [
   "/projects/aoikumo.png",
   "/projects/nft3.png",
   "/projects/basicimageeditor.png",
+  "/wallpaper.avif",
 ];
 
 export const loadGalleryImages = () => {

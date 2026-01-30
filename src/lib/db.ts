@@ -12,21 +12,35 @@ interface PortfolioDB extends DBSchema {
     };
     indexes: { 'by-date': number };
   };
+  settings: {
+    key: string;
+    value: any;
+  };
 }
 
 const DB_NAME = 'os-portfolio-db';
 const STORE_NAME = 'gallery';
 
-export const initDB = async () => {
-  const db = await openDB<PortfolioDB>(DB_NAME, 1, {
+const getDB = async () => {
+  return openDB<PortfolioDB>(DB_NAME, 3, {
     upgrade(db) {
-      const store = db.createObjectStore(STORE_NAME, {
-        keyPath: 'id',
-        autoIncrement: true,
-      });
-      store.createIndex('by-date', 'createdAt');
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        const store = db.createObjectStore(STORE_NAME, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+        store.createIndex('by-date', 'createdAt');
+      }
+      
+      if (!db.objectStoreNames.contains('settings')) {
+        db.createObjectStore('settings');
+      }
     },
   });
+};
+
+export const initDB = async () => {
+  const db = await getDB();
 
   // Check if we need to migrate from localStorage
   const count = await db.count(STORE_NAME);
@@ -71,12 +85,12 @@ export const initDB = async () => {
 };
 
 export const getGalleryItems = async () => {
-  const db = await openDB<PortfolioDB>(DB_NAME, 1);
+  const db = await getDB();
   return db.getAllFromIndex(STORE_NAME, 'by-date');
 };
 
 export const saveMedia = async (blob: Blob, type: 'image' | 'video') => {
-  const db = await openDB<PortfolioDB>(DB_NAME, 1);
+  const db = await getDB();
   return db.add(STORE_NAME, {
     blob,
     type,
@@ -85,6 +99,16 @@ export const saveMedia = async (blob: Blob, type: 'image' | 'video') => {
 };
 
 export const deleteMedia = async (id: number) => {
-  const db = await openDB<PortfolioDB>(DB_NAME, 1);
+  const db = await getDB();
   return db.delete(STORE_NAME, id);
+};
+
+export const getSetting = async (key: string) => {
+  const db = await getDB();
+  return db.get('settings', key);
+};
+
+export const setSetting = async (key: string, value: any) => {
+  const db = await getDB();
+  return db.put('settings', value, key);
 };

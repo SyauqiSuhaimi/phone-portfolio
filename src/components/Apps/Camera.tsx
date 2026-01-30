@@ -219,6 +219,16 @@ const Camera = ({ onOpenGallery }: CameraProps) => {
       ) : (
         <div className="w-full h-full bg-black" />
       )}
+      
+      {/* Storage Disclaimer */}
+      <div className="absolute top-12 left-0 right-0 flex justify-center z-10 pointer-events-none">
+        <div className="bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+          <p className="text-[10px] text-white/70 font-medium">
+            Media stored locally on device
+          </p>
+        </div>
+      </div>
+
       <button
         type="button"
         onClick={onOpenGallery}

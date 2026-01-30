@@ -8,15 +8,18 @@ import ControlCenter from "./ControlCenter";
 import Projects from "../Apps/Projects";
 import Skills from "../Apps/Skills";
 import { useSwipe } from "../../hooks/useSwipe";
+import { useWallpaper } from "../../context/WallpaperContext";
 
 type HomeScreenProps = {
-  onAppClick: (appId: string, origin?: DOMRect) => void;
+  onAppClick: (id: string, origin?: DOMRect) => void;
 };
 
 const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
   const [overlay, setOverlay] = useState<"control" | "search" | null>(null);
   const [screenIndex, setScreenIndex] = useState(0);
   const prevScreenIndex = useRef(0);
+  // const [direction, setDirection] = useState(0); // Removing duplicate
+  const { wallpaper, type } = useWallpaper();
 
   const handleSwipeUp = () => {
     if (screenIndex === 0) setOverlay("search");
@@ -81,13 +84,22 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
 
   return (
     <div
-      className="w-full h-full bg-cover bg-center flex flex-col relative overflow-hidden"
+      className="w-full h-full bg-cover bg-center flex flex-col relative overflow-hidden transition-all duration-700"
       style={{
-        backgroundImage:
-          'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")',
+        backgroundImage: type === 'image' ? `url(${wallpaper})` : undefined,
       }}
       {...swipeHandlers}
     >
+      {type === 'video' && (
+        <video
+          src={wallpaper}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+        />
+      )}
       <StatusBar />
 
       <div className="flex-1 w-full relative">

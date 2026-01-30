@@ -2,23 +2,81 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Share2, Info, Heart, Play, Trash2 } from "lucide-react";
+import { X, Share2, Info, Heart, Play, Trash2, Smartphone } from "lucide-react";
 import { useGallery, type GalleryItem } from "../../hooks/useGallery";
+import { useWallpaper } from "../../context/WallpaperContext";
+import { useNotification } from "../../context/NotificationContext";
+import ConfirmDialog from "../../components/ui/ConfirmDialog";
+import { Plus } from "lucide-react";
+import { useRef } from "react";
 
 export const Gallery = () => {
-  const { items: images, loading, removeMedia } = useGallery();
+  const { items: images, loading, addMedia, removeMedia } = useGallery();
+  const { setWallpaper } = useWallpaper();
+  const { addNotification } = useNotification();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedImage, setSelectedImage] = useState<{ src: string; index: number; type: 'image' | 'video'; id: number } | null>(null);
+
+  // Dialog State
+  const [confirmState, setConfirmState] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: "info" | "danger";
+    onConfirm: () => void;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info",
+    onConfirm: () => {},
+  });
+
+  const closeConfirm = () => setConfirmState(prev => ({ ...prev, isOpen: false }));
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Check size (10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File is too large. Maximum size is 10MB.");
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
+      await addMedia(file, file.type.startsWith('image/') ? 'image' : 'video');
+    } else {
+      alert("Only images and videos are supported.");
+    }
+    
+    // Reset input
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   return (
     <div className="h-full flex flex-col text-gray-900 dark:text-white relative font-sans select-none">
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleFileUpload} 
+        className="hidden" 
+        accept="image/*,video/*"
+      />
+      
       {/* Header */}
-      <div className="absolute top-0 inset-x-0 h-16 backdrop-blur-xl z-10 flex items-center justify-between px-6 border-b border-black/5 dark:border-white/5">
+      <div className="flex-none p-5 flex items-end justify-between">
         <div>
-          <h2 className="text-lg font-semibold tracking-wide">Gallery</h2>
-          <p className="text-xs text-gray-500 dark:text-zinc-400 font-medium">
-            {loading ? "Loading..." : `${images.length} Items`}
-          </p>
+          <h1 className="text-3xl font-bold tracking-tight">Gallery</h1>
+          <p className="text-sm opacity-60 font-medium">{images.length} Items</p>
         </div>
+        <button 
+          onClick={() => fileInputRef.current?.click()}
+          className="w-10 h-10 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform"
+        >
+          <Plus size={24} />
+        </button>
       </div>
 
       {/* Scrollable Content */}
@@ -167,31 +225,76 @@ export const Gallery = () => {
                 className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-around pb-4 z-20"
                 onClick={(e) => e.stopPropagation()} 
              >
-                <button className="p-3 text-white/80 hover:text-white transition-colors flex flex-col items-center gap-1 group">
-                    <Share2 size={20} className="group-hover:-translate-y-1 transition-transform" />
-                    <span className="text-[10px] font-medium">Share</span>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const isVideo = selectedImage.type === 'video';
+
+                    setConfirmState({
+                      isOpen: true,
+                      title: "Set Wallpaper",
+                      message: `Do you want to set this ${isVideo ? 'video' : 'image'} as your home screen wallpaper?`,
+                      type: "info",
+                      onConfirm: async () => {
+                        try {
+                          const response = await fetch(selectedImage.src);
+                          const blob = await response.blob();
+                          await setWallpaper(blob);
+                          // Could initiate a toast here
+                          addNotification({
+                            title: "Wallpaper Updated",
+                            message: "Your home screen looks fresh! ✨",
+                            icon: "🖼️"
+                          });
+                          closeConfirm();
+                        } catch (err) {
+                          console.error(err);
+                        }
+                      }
+                    });
+                  }}
+                  className="p-3 text-white/80 hover:text-blue-400 transition-colors flex flex-col items-center gap-1 group"
+                >
+                    <Smartphone size={20} className="group-hover:scale-110 transition-transform" />
+                    {/* <span className="text-[10px] font-medium">Wallpaper</span> */}
                 </button>
                  <button className="p-3 text-white/80 hover:text-pink-500 transition-colors flex flex-col items-center gap-1 group">
                      <Heart size={20} className="group-hover:fill-current group-hover:scale-110 transition-transform" />
-                     <span className="text-[10px] font-medium">Favorite</span>
+                     {/* <span className="text-[10px] font-medium">Favorite</span> */}
                  </button>
                  <button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (confirm('Delete this item?')) {
-                        removeMedia(selectedImage.id);
-                        setSelectedImage(null);
-                      }
+                      setConfirmState({
+                        isOpen: true,
+                        title: "Delete Item",
+                        message: "Are you sure you want to delete this item? This cannot be undone.",
+                        type: "danger",
+                        onConfirm: () => {
+                          removeMedia(selectedImage.id);
+                          setSelectedImage(null);
+                          closeConfirm();
+                        }
+                      });
                     }}
                     className="p-3 text-white/80 hover:text-red-500 transition-colors flex flex-col items-center gap-1 group"
                  >
                      <Trash2 size={20} className="group-hover:scale-110 transition-transform" />
-                     <span className="text-[10px] font-medium">Delete</span>
+                     {/* <span className="text-[10px] font-medium">Delete</span> */}
                  </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ConfirmDialog
+        isOpen={confirmState.isOpen}
+        title={confirmState.title}
+        message={confirmState.message}
+        onConfirm={confirmState.onConfirm}
+        onCancel={closeConfirm}
+        type={confirmState.type}
+      />
     </div>
   );
 };
