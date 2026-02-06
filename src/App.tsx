@@ -14,6 +14,7 @@ import AppStore from "./components/Apps/AppStore";
 import Settings from "./components/Apps/Settings";
 import Contact from "./components/Apps/Contact";
 import { Gallery } from "./components/Apps/Gallery";
+import CaseStudyApp from "./components/Apps/CaseStudy";
 import NotificationSystem from "./components/OS/NotificationSystem";
 import BottomNav from "./components/OS/BottomNav";
 import { useSwipe } from "./hooks/useSwipe";
@@ -108,6 +109,8 @@ function App() {
         return <Contact />;
       case "settings":
         return <Settings />;
+      case "case-study":
+        return <CaseStudyApp />;
       default:
         return (
           <div className="p-5 text-white">Content for {id} coming soon...</div>

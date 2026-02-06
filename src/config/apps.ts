@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Camera, Image, Settings, MonitorSmartphone, User, Zap } from "lucide-react";
+import { Camera, Image, Settings, MonitorSmartphone, User, Zap, BookOpen } from "lucide-react";
 
 export type AppConfig = {
   id: string;
@@ -84,6 +84,11 @@ export const apps: AppConfig[] = [
   //   name: 'Contact',
   //   iconPath: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6', // Mail
   // },
+  {
+    id: 'case-study',
+    name: 'Case Study',
+    icon: BookOpen,
+  },
   {
     id: 'settings',
     name: 'Settings',
