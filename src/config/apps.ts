@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Camera, Image, Settings, MonitorSmartphone, User, Zap } from "lucide-react";
+import { Camera, Image, Settings, MonitorSmartphone, User, Zap, MessageCircle } from "lucide-react";
 
 export type AppConfig = {
   id: string;
@@ -47,12 +47,11 @@ export const apps: AppConfig[] = [
   //     },
   //   ],
   // },
-  // {
-  //   id: "chat",
-  //   name: "Chat",
-  //   iconPath:
-  //     "M21 15a4 4 0 0 1-4 4H8l-5 3V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z",
-  // },
+  {
+    id: "chat",
+    name: "Chat",
+    icon: MessageCircle,
+  },
   
   {
     id: "about",
