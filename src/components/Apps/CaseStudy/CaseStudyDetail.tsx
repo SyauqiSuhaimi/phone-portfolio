@@ -7,9 +7,11 @@ import { CaseStudy, CaseStudyBlock } from '../../../data/caseStudies';
 // Ideally these would be dynamically imported or in a registry, 
 // but for now we map them directly for simplicity.
 import { WindowPhysicsDemo } from './Demos/WindowPhysicsDemo';
+import { FlowchartBuilderDemo } from './Demos/FlowchartBuilderDemo';
 
 const DEMO_REGISTRY: Record<string, React.FC> = {
-    'WindowPhysicsDemo': WindowPhysicsDemo
+    'WindowPhysicsDemo': WindowPhysicsDemo,
+    'FlowchartBuilderDemo': FlowchartBuilderDemo,
 };
 
 interface CaseStudyDetailProps {

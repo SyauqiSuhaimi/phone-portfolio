@@ -141,5 +141,70 @@ function handleTyping(userId: string, roomId: string) {
             content: "WebSocket connection management is critical—always implement heartbeats and reconnection logic. Redis Pub/Sub is excellent for fan-out but watch your memory usage. And never underestimate the UX impact of a well-tuned typing indicator."
         }
     ]
+  },
+  {
+    id: 'document-approval-flow',
+    title: 'Building a Customizable Document Approval Flow',
+    subtitle: 'Creating a no-code document approval flow builder with React Flow.',
+    category: 'Full Stack',
+    readTime: '7 min read',
+    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
+    date: 'December 2025',
+    tags: ['.Net', 'React', 'React Flow', 'Canvas', 'Drag & Drop'],
+    content: [
+        { 
+            type: 'text', 
+            content: "Document approval flows are deceptively complex. Users expect smooth dragging, precise snapping, and real-time connection updates. This case study explores how I built a performant diagramming tool using React Flow." 
+        },
+        { type: 'heading', content: 'The Challenge' },
+        { 
+            type: 'text', 
+            content: "The client needed a no-code automation builder where users could visually design workflows. Think Figma meets Zapier—nodes representing actions, connected by arrows showing data flow." 
+        },
+        { type: 'heading', content: 'Why React Flow?' },
+        { 
+            type: 'text', 
+            content: "After evaluating several options, I chose React Flow (xyflow) for its excellent documentation, built-in features like minimap and controls, and strong TypeScript support. It handles the rendering layer while giving me full control over the data model." 
+        },
+        {
+            type: 'code',
+            language: 'typescript',
+            caption: 'Basic node and connection types',
+            code: `type FlowNode = {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  type: 'trigger' | 'action' | 'condition';
+};
+
+type Connection = {
+  from: string;  // source node id
+  to: string;    // target node id
+  label?: string;
+};`
+        },
+        { type: 'heading', content: 'Interactive Demo' },
+        {
+            type: 'text',
+            content: "Below is a simplified version of the flowchart builder. Try dragging the nodes around—notice how the connections update in real-time."
+        },
+        {
+            type: 'demo',
+            componentName: 'FlowchartBuilderDemo',
+            caption: 'Mini flowchart builder – drag nodes to see live connection updates.',
+            height: '280px'
+        },
+        { type: 'heading', content: 'Key Technical Decisions' },
+        {
+            type: 'text',
+            content: "Performance was critical. I used SVG for connections (simpler math) and absolutely-positioned divs for nodes (better for complex content). The trick was batching position updates with requestAnimationFrame to avoid layout thrashing."
+        },
+        { type: 'heading', content: 'Results' },
+        {
+            type: 'text',
+            content: "The final editor handles 100+ nodes without noticeable lag. Users can create, connect, and rearrange nodes with intuitive drag gestures. The undo/redo system tracks every state change."
+        }
+    ]
   }
 ];
