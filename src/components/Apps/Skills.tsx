@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTheme } from "../../context/ThemeContext";
 import skills from "../../../data/skills.json";
 
@@ -18,11 +19,12 @@ const Skills = () => {
             <div
               className={`w-14 h-14 rounded-2xl flex items-center justify-center  transition-colors`}
             >
-              <img
+              <Image
                 src={skill.src}
                 alt={skill.name}
-                className=" object-contain"
-                loading="lazy"
+                width={40}
+                height={40}
+                className="object-contain"
               />
             </div>
             <span

@@ -27,3 +27,4 @@ out
 *.sw?
 AGENTS.md
 /FeatureLog
+/FixLog

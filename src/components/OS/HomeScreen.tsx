@@ -5,7 +5,7 @@ import { AnimatePresence, motion, type Transition } from "framer-motion";
 import StatusBar from "./StatusBar";
 import AppGrid from "./AppGrid";
 import ControlCenter from "./ControlCenter";
-import Projects from "../Apps/Projects";
+import CaseStudyApp from "../Apps/CaseStudy";
 import Skills from "../Apps/Skills";
 import { useSwipe } from "../../hooks/useSwipe";
 import { useWallpaper } from "../../context/WallpaperContext";
@@ -122,9 +122,9 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
             </motion.div>
           )}
 
-          {/* {screenIndex === -1 && (
+          {screenIndex === -1 && (
             <motion.div
-              key="projects"
+              key="case-study"
               custom={direction}
               variants={pageVariants}
               initial="enter"
@@ -133,9 +133,9 @@ const HomeScreen = ({ onAppClick }: HomeScreenProps) => {
               transition={pageTransition}
               className="absolute top-0 left-0 w-full h-full flex flex-col pt-16 px-5 pb-5 overflow-y-auto"
             >
-              <Projects />
+              <CaseStudyApp />
             </motion.div>
-          )} */}
+          )}
 
           {screenIndex === 1 && (
             <motion.div
