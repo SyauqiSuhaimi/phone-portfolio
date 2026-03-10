@@ -34,6 +34,15 @@
   },
   {
     "id": 3,
+    "title": "Patin Tempoyak Kak Zee",
+    "description": "Landing page for a local restaurant in Malaysia, showcasing their menu and services.",
+    "type": ["Landing Page"],
+    "tech": ["React", "HTML/CSS", "Javascript"],
+    "image": "/projects/patin-tempoyak-kak-zee.png",
+    "link": "https://patin-tempoyak-kak-zee.vercel.app/"
+  },
+  {
+    "id": 4,
     "title": "Basic Image Editor",
     "description": "100% AI-generated functional image editor.",
     "type": ["Tools", "Web App"],
@@ -42,7 +51,7 @@
     "link": "https://image-editor-delta-eight.vercel.app/"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "NeedForTrees",
     "description": "Built using Vue.js, this responsive website introduces NeedForTrees, a project aimed at raising awareness about deforestation and showcasing cutting-edge NFT technology.",
     "type": ["Landing Page"],
@@ -51,7 +60,7 @@
     "link": "https://nft-project-omega-nine.vercel.app/"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Wise Premium",
     "description": "Designed using Vue.js and featuring multilingual support in Mandarin and English, this responsive website serves as the gateway to an exclusive club experience.",
     "type": ["Landing Page"],

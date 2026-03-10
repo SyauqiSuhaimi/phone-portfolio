@@ -2,6 +2,7 @@
 
 import React, { useRef, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import techTreeData from "../../../data/tech_tree.json";
 
 // --- Types ---
@@ -190,7 +191,13 @@ const SkillsTree = () => {
                     <div className={`w-14 h-14 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center relative shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:border-cyan-400/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]
                         ${selectedNode?.id === node.id ? 'border-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.4)]' : ''}
                     `}>
-                        <img src={node.icon} alt={node.label} className="w-8 h-8 object-contain drop-shadow-lg" />
+                        <Image
+                            src={node.icon}
+                            alt={node.label}
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 object-contain drop-shadow-lg"
+                        />
                         
                         {/* Connecting Dot Top (Input) */}
                         {lvlIdx > 0 && <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-gray-500 rounded-full" />}
@@ -217,7 +224,13 @@ const SkillsTree = () => {
                 className="fixed bottom-20 left-4 right-4 bg-gray-900/90 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-2xl z-50 flex gap-4 items-center"
              >
                  <div className="w-12 h-12 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center p-2">
-                     <img src={selectedNode.icon} className="w-full h-full object-contain" />
+                     <Image
+                        src={selectedNode.icon}
+                        alt={selectedNode.label}
+                        width={32}
+                        height={32}
+                        className="w-full h-full object-contain"
+                     />
                  </div>
                  <div className="flex-1">
                      <h3 className="text-lg font-bold text-white">{selectedNode.label}</h3>

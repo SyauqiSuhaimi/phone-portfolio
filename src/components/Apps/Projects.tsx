@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useTheme } from "../../context/ThemeContext";
 import projects from "../../../data/projects.json";
 
@@ -65,12 +66,13 @@ const Projects = () => {
                       theme === "dark" ? "bg-black/30" : "bg-white/70"
                     }`}
                   >
-                    <div className="h-40 sm:h-44 w-full overflow-hidden">
-                      <img
+                    <div className="relative h-40 sm:h-44 w-full overflow-hidden">
+                      <Image
                         src={project.image}
                         alt={`${project.title} preview`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 420px"
                         className="w-full h-full object-cover opacity-80"
-                        loading="lazy"
                       />
                     </div>
                     <div className="p-4">
@@ -122,12 +124,13 @@ const Projects = () => {
                 </div>
 
                 <div className="relative">
-                  <div className="h-52 sm:h-56 w-full overflow-hidden">
-                    <img
+                  <div className="relative h-52 sm:h-56 w-full overflow-hidden">
+                    <Image
                       src={remaining[0].image}
                       alt={`${remaining[0].title} preview`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 420px"
                       className="w-full h-full object-cover"
-                      loading="lazy"
                     />
                   </div>
                   <div className="p-5">

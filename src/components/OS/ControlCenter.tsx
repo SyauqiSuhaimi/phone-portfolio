@@ -69,7 +69,7 @@ const ControlCenter = ({ onClose }: ControlCenterProps) => {
           <div
             className={`aspect-square rounded-xl flex items-center justify-center cursor-pointer transition-colors ${
               theme === "dark"
-                ? "bg-white text-black"
+                ? "bg-os-accent text-white"
                 : "bg-black/5 hover:bg-black/10 text-black"
             }`}
             onClick={toggleTheme}
@@ -146,7 +146,7 @@ const ControlCenter = ({ onClose }: ControlCenterProps) => {
             className="flex-1"
           />
         </div>
-
+        {/* 
         <div className="flex items-center gap-4">
           <div
             className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
@@ -201,7 +201,7 @@ const ControlCenter = ({ onClose }: ControlCenterProps) => {
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </motion.div>
   );

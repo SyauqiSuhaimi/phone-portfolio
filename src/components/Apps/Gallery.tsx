@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { X, Share2, Info, Heart, Play, Trash2, Smartphone } from "lucide-react";
 import { useGallery, type GalleryItem } from "../../hooks/useGallery";
 import { useWallpaper } from "../../context/WallpaperContext";
@@ -114,11 +115,13 @@ export const Gallery = () => {
                     </div>
                   </div>
                 ) : (
-                  <img
+                  <Image
                     src={item.url}
                     alt={`Photo ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 33vw, 160px"
+                    unoptimized
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
                   />
                 )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
@@ -211,11 +214,16 @@ export const Gallery = () => {
                         onClick={(e) => e.stopPropagation()}
                       />
                     ) : (
-                      <img
-                        src={selectedImage.src}
-                        alt="Selected"
-                        className="max-w-full max-h-full object-contain shadow-2xl select-none pointer-events-none"
-                      />
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={selectedImage.src}
+                          alt="Selected media"
+                          fill
+                          sizes="100vw"
+                          unoptimized
+                          className="max-w-full max-h-full object-contain shadow-2xl select-none pointer-events-none"
+                        />
+                      </div>
                     )}
                  </motion.div>
             </div>

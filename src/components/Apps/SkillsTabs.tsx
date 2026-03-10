@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { useTheme } from "../../context/ThemeContext";
 import skills from "../../../data/skills.json";
 
@@ -106,11 +107,12 @@ const SkillsTabs = () => {
           return (
             <div key={skill.name} className="group flex flex-col items-center gap-2">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-colors">
-                <img
+                <Image
                   src={skill.src}
                   alt={skill.name}
+                  width={40}
+                  height={40}
                   className="object-contain"
-                  loading="lazy"
                 />
               </div>
               <span

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { useGallery } from "../../hooks/useGallery";
 import { SwitchCamera } from "lucide-react";
 
@@ -38,6 +39,7 @@ const Camera = ({ onOpenGallery }: CameraProps) => {
 
   useEffect(() => {
     let isMounted = true;
+    const selectedDevice = devices[currentDeviceIndex];
 
     const requestCamera = async () => {
       if (!navigator.mediaDevices?.getUserMedia) {
@@ -51,9 +53,9 @@ const Camera = ({ onOpenGallery }: CameraProps) => {
         let stream: MediaStream;
         
         // If we have devices and a specific index, use that
-        if (devices.length > 0 && devices[currentDeviceIndex]) {
+        if (selectedDevice) {
              stream = await navigator.mediaDevices.getUserMedia({
-                video: { deviceId: { exact: devices[currentDeviceIndex].deviceId } },
+                video: { deviceId: { exact: selectedDevice.deviceId } },
                 audio: false,
              });
         } else {
@@ -100,7 +102,7 @@ const Camera = ({ onOpenGallery }: CameraProps) => {
         setActiveStreamId(null);
       }
     };
-  }, [currentDeviceIndex]);
+  }, [currentDeviceIndex, devices]);
 
   useEffect(() => {
     if (permission === "granted" && videoRef.current && streamRef.current) {
@@ -235,9 +237,12 @@ const Camera = ({ onOpenGallery }: CameraProps) => {
         className="absolute left-6 bottom-6 w-12 h-12 rounded-xl bg-white/10 border border-white/20 overflow-hidden z-20"
       >
         {latestImage ? (
-          <img
+          <Image
             src={latestImage}
             alt="Latest capture"
+            fill
+            sizes="48px"
+            unoptimized
             className="w-full h-full object-cover"
           />
         ) : (
