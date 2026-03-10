@@ -67,18 +67,6 @@ const FeaturedCard = ({
           {project.description}
         </p>
         <div className="flex items-center justify-between">
-          <div className="flex -space-x-2">
-            {/* Fake user avatars for social proof */}
-            <div className="w-8 h-8 rounded-full bg-blue-500 border-2 border-black flex items-center justify-center text-[10px] text-white font-bold">
-              JD
-            </div>
-            <div className="w-8 h-8 rounded-full bg-green-500 border-2 border-black flex items-center justify-center text-[10px] text-white font-bold">
-              AS
-            </div>
-            <div className="w-8 h-8 rounded-full bg-gray-500 border-2 border-black flex items-center justify-center text-[10px] text-white font-bold">
-              +9
-            </div>
-          </div>
           <motion.button
             whileTap={{ scale: 0.9 }}
             className="bg-white/20 backdrop-blur-md text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-white/30 transition-colors"
@@ -349,9 +337,14 @@ const AppStore = () => {
                 : "Browse"}
           </h1>
         </div>
-        <div className="w-9 h-9 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center overflow-hidden">
-          {/* User avatar placeholder */}
-          <span className="text-xs font-bold">Sy</span>
+        <div className="w-9 h-9 rounded-full overflow-hidden relative">
+          <Image
+            src="/profile_pic.jpeg"
+            alt="User avatar"
+            fill
+            sizes="36px"
+            className="object-cover"
+          />
         </div>
       </div>
 

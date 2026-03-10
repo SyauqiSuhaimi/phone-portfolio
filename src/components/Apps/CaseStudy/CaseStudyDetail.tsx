@@ -227,8 +227,15 @@ const CaseStudyDetail = ({ study, onBack }: CaseStudyDetailProps) => {
             {/* Meta Data */}
             <div className="flex items-center gap-4 mb-10 pb-8 border-b border-gray-100 dark:border-white/10 text-sm text-gray-500">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gray-200"></div>{" "}
-                {/* Author Avatar Placeholder */}
+                <div className="w-8 h-8 rounded-full overflow-hidden relative">
+                  <Image
+                    src="/profile_pic.jpeg"
+                    alt="Author avatar"
+                    fill
+                    sizes="32px"
+                    className="object-cover"
+                  />
+                </div>
                 <span className="font-semibold text-black dark:text-white">
                   Syauqi Suhaimi
                 </span>

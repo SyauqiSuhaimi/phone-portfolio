@@ -99,7 +99,7 @@ const handleAppClick = (appId: string, origin?: DOMRect) => {
         caption: "Live interactive demo of the framer-motion spring config.",
         height: "300px",
       },
-      { type: "heading", content: "Data, Personalization, and AI" },
+      { type: "heading", content: "Data and Personalization" },
       {
         type: "text",
         content:
@@ -109,13 +109,13 @@ const handleAppClick = (appId: string, origin?: DOMRect) => {
       {
         type: "text",
         content:
-          "I kept the runtime lightweight by rendering only one active app window, using AnimatePresence for controlled mounting/unmounting, and limiting chat context sent to the model. For resilience, the app validates API payloads, handles malformed local storage safely, and falls back gracefully when AI requests fail.",
+          "I kept the runtime lightweight by rendering only one active app window and using AnimatePresence for controlled mounting/unmounting. This way, even with complex animations, the performance stays smooth on mobile devices.",
       },
       { type: "heading", content: "Results" },
       {
         type: "text",
         content:
-          "The final project ships as a cohesive interactive portfolio: lock screen to unlock, swipe-based navigation, app-style content discovery, local media persistence, and an AI assistant that stays scoped to portfolio-related questions. The architecture is modular enough to add new apps without rewriting the shell.",
+          "The final project ships as a cohesive interactive portfolio: lock screen to unlock, swipe-based navigation, app-style content discovery and local media persistence. The architecture is modular enough to add new apps without rewriting the shell.",
       },
     ],
   },
@@ -223,7 +223,7 @@ type DiagramRecord = {
       {
         type: "text",
         content:
-          "In DocFlowPortal, the client needed to digitize many operational forms. The old approach was custom delivery per form, where each request became a separate development task and release cycle.",
+          "For a client portal project, the team needed to digitize many operational forms. The old approach was custom delivery per form, where each request became a separate development task and release cycle.",
       },
       { type: "heading", content: "The Challenge" },
       {
@@ -366,7 +366,7 @@ interface FormDefinition {
       {
         type: "text",
         content:
-          "In DocFlowPortal, the workflow canvas is implemented with React Flow. The builder stores states plus transitions, and each node has configurable metadata such as label, description, assignments, and completion rules. Data Entry nodes include attached form schema, approval nodes handle decision paths, and notify nodes handle read/notification steps.",
+          "The workflow canvas is implemented with React Flow. The builder stores states plus transitions, and each node has configurable metadata such as label, description, assignments, and completion rules. Data Entry nodes include attached form schema, approval nodes handle decision paths, and notify nodes handle read/notification steps.",
       },
       { type: "heading", content: "Guardrails We Added" },
       {
