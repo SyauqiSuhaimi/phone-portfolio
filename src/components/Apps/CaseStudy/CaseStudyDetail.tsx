@@ -80,7 +80,7 @@ const DemoBlock = ({
     <div className="my-10">
       <div
         className={`w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-inner bg-gray-100 dark:bg-[#0A0A0A] relative group isolate`}
-        style={{ height }}
+        style={{ minHeight: height }}
       >
         <div className="absolute inset-x-0 top-0 h-8 z-10 bg-gradient-to-b from-black/5 to-transparent pointer-events-none" />
         <Component />
