@@ -331,7 +331,7 @@ export const ProcedureBuilderFlowDemo = () => {
   };
 
   return (
-    <div className="w-full h-full p-4 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-zinc-950 dark:to-zinc-900">
+    <div className="w-full h-[320px] p-4 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-zinc-950 dark:to-zinc-900">
       <div className="w-full h-full rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 overflow-hidden">
         <div className="h-11 px-3 border-b border-black/10 dark:border-white/10 flex items-center justify-between gap-2">
           <p className="text-[11px] text-zinc-600 dark:text-zinc-300">
