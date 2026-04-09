@@ -15,6 +15,7 @@ import Settings from "./components/Apps/Settings";
 import Contact from "./components/Apps/Contact";
 import { Gallery } from "./components/Apps/Gallery";
 import CaseStudyApp from "./components/Apps/CaseStudy";
+import Wordle from "./components/Apps/Wordle";
 import NotificationSystem from "./components/OS/NotificationSystem";
 import BottomNav from "./components/OS/BottomNav";
 import { useSwipe } from "./hooks/useSwipe";
@@ -22,6 +23,18 @@ import { useHaptics } from "./hooks/useHaptics";
 import { apps } from "./config/apps";
 import Skills from "./components/Apps/Skills";
 import { useWallpaper } from "./context/WallpaperContext";
+
+const findAppConfig = (appId: string | null) => {
+  if (!appId) return undefined;
+  for (const app of apps) {
+    if (app.id === appId) return app;
+    if (app.apps) {
+      const found = app.apps.find((a) => a.id === appId);
+      if (found) return found;
+    }
+  }
+  return undefined;
+};
 
 function App() {
   const [isLocked, setIsLocked] = useState(true);
@@ -38,7 +51,7 @@ function App() {
 
   const handleAppClick = (appId: string, origin?: DOMRect) => {
     triggerHaptic([5]);
-    const appConfig = apps.find((app) => app.id === appId);
+    const appConfig = findAppConfig(appId);
     if (appConfig?.type === "folder") {
       setActiveAppId(null);
       setActiveFolderId(appId);
@@ -111,6 +124,8 @@ function App() {
         return <Settings />;
       case "case-study":
         return <CaseStudyApp />;
+      case "wordle":
+        return <Wordle />;
       default:
         return (
           <div className="p-5 text-white">Content for {id} coming soon...</div>
@@ -118,8 +133,8 @@ function App() {
     }
   };
 
-  const activeAppConfig = apps.find((app) => app.id === activeAppId);
-  const activeFolderConfig = apps.find((app) => app.id === activeFolderId);
+  const activeAppConfig = findAppConfig(activeAppId);
+  const activeFolderConfig = findAppConfig(activeFolderId);
 
   return (
     <div

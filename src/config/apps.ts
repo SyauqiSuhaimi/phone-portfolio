@@ -1,5 +1,15 @@
 import type { LucideIcon } from "lucide-react";
-import { Camera, Image, Settings, MonitorSmartphone, User, Zap, BookOpen } from "lucide-react";
+import {
+  Camera,
+  Image,
+  Settings,
+  MonitorSmartphone,
+  User,
+  Zap,
+  BookOpen,
+  Gamepad2,
+  BookA,
+} from "lucide-react";
 
 export type AppConfig = {
   id: string;
@@ -53,7 +63,7 @@ export const apps: AppConfig[] = [
   //   iconPath:
   //     "M21 15a4 4 0 0 1-4 4H8l-5 3V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z",
   // },
-  
+
   {
     id: "about",
     name: "About Me",
@@ -75,8 +85,8 @@ export const apps: AppConfig[] = [
     icon: Camera,
   },
   {
-    id: 'gallery',
-    name: 'Gallery',
+    id: "gallery",
+    name: "Gallery",
     icon: Image,
   },
   // {
@@ -85,13 +95,27 @@ export const apps: AppConfig[] = [
   //   iconPath: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6', // Mail
   // },
   {
-    id: 'case-study',
-    name: 'Case Study',
+    id: "case-study",
+    name: "Case Study",
     icon: BookOpen,
   },
   {
-    id: 'settings',
-    name: 'Settings',
+    id: "settings",
+    name: "Settings",
     icon: Settings,
+  },
+
+  {
+    id: "games",
+    name: "Games",
+    type: "folder",
+    icon: Gamepad2,
+    apps: [
+      {
+        id: "wordle",
+        name: "Wordle",
+        icon: BookA,
+      },
+    ],
   },
 ];
