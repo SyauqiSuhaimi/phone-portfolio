@@ -9,6 +9,7 @@ import {
   BookOpen,
   Gamepad2,
   BookA,
+  Bug,
 } from "lucide-react";
 
 export type AppConfig = {
@@ -115,6 +116,11 @@ export const apps: AppConfig[] = [
         id: "wordle",
         name: "Wordle",
         icon: BookA,
+      },
+      {
+        id: "jumpyfrog",
+        name: "Jumpy Frog",
+        icon: Bug,
       },
     ],
   },

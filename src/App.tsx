@@ -16,6 +16,7 @@ import Contact from "./components/Apps/Contact";
 import { Gallery } from "./components/Apps/Gallery";
 import CaseStudyApp from "./components/Apps/CaseStudy";
 import Wordle from "./components/Apps/Wordle";
+import JumpyFrog from "./components/Apps/JumpyFrog";
 import NotificationSystem from "./components/OS/NotificationSystem";
 import BottomNav from "./components/OS/BottomNav";
 import { useSwipe } from "./hooks/useSwipe";
@@ -126,6 +127,8 @@ function App() {
         return <CaseStudyApp />;
       case "wordle":
         return <Wordle />;
+      case "jumpyfrog":
+        return <JumpyFrog />;
       default:
         return (
           <div className="p-5 text-white">Content for {id} coming soon...</div>
